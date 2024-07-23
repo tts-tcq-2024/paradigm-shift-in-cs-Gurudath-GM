@@ -15,9 +15,9 @@ namespace paradigm_shift_csharp
             return true;
         }
 
-        private static bool isBatteryStateOfChargeOk(float soc)
+        private static bool isBatteryStateOfChargeOk(float stateOfCharge)
         {
-            if (soc < 20 || soc > 80)
+            if (stateOfCharge < 20 || stateOfCharge > 80)
             {
                 Console.WriteLine("State of Charge is out of range!");
                 return false;
@@ -39,22 +39,12 @@ namespace paradigm_shift_csharp
         {
             return (isBatteryTemperatureOk(temperature) & isBatteryStateOfChargeOk(soc) & isBatteryChargeRateOk(chargeRate));
         }
-
-        public static void ExpectedOutput(bool expression, bool expectTrueFlase)
-        {
-            if (expression != expectTrueFlase)
-            {
-                Console.WriteLine($"Expected {expectTrueFlase}, but got {!expectTrueFlase}");
-                Environment.Exit(1);
-            }
-        }
-
+        
         public static void ExpectTrue(bool expression)
         {
             if (!expression)
             {
                 Console.WriteLine("Expected true, but got false");
-                // Environment.Exit(1);
             }
         }
         
@@ -63,7 +53,6 @@ namespace paradigm_shift_csharp
             if (expression)
             {
                 Console.WriteLine("Expected false, but got true");
-                // Environment.Exit(1);
             }
         }
         

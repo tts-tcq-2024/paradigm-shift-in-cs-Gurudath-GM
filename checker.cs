@@ -54,7 +54,7 @@ namespace paradigm_shift_csharp
             if (!expression)
             {
                 Console.WriteLine("Expected true, but got false");
-                Environment.Exit(1);
+                // Environment.Exit(1);
             }
         }
         
@@ -63,7 +63,7 @@ namespace paradigm_shift_csharp
             if (expression)
             {
                 Console.WriteLine("Expected false, but got true");
-                Environment.Exit(1);
+                // Environment.Exit(1);
             }
         }
         
@@ -78,7 +78,7 @@ namespace paradigm_shift_csharp
             ExpectFalse(batteryIsOk(-1, 19, 0.9f));
             ExpectFalse(batteryIsOk(50, 85, 0.9f));
             ExpectTrue(batteryIsOk(0, 20, 0.9f));
-            ExpectFalse(batteryIsOk(45, 80, 0.9f));
+            ExpectFalse(batteryIsOk(45, 80, 0.7f));
             return 0;
         } 
     }

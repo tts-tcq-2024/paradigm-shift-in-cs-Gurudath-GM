@@ -1,3 +1,5 @@
+using Google.Cloud.Translation.V2;
+
 namespace BatteryManagementSystem_
 {
     internal class BatteryManagementSystemTest
@@ -6,7 +8,7 @@ namespace BatteryManagementSystem_
         {
             if (!expression)
             {
-                Console.WriteLine("Expected true, but got false");
+                BatteryStatus.Print("Expected true, but got false");
             }
         }
 
@@ -14,21 +16,22 @@ namespace BatteryManagementSystem_
         {
             if (expression)
             {
-                Console.WriteLine("Expected false, but got true");
+                BatteryStatus.Print("Expected false, but got true");
             }
         }
 
         public static void Execution()
         {
-            Console.WriteLine("Valid test");
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(5, 21, 0.22f));
+            BatteryStatus.Print("Valid tests");
+            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(5.5f, 20.5f, 0.22f));
             BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(20, 45, 0.7f));
             BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(45, 80, 0.8f));
 
-            Console.WriteLine("\nInvalid test");
+            Console.WriteLine();
+            BatteryStatus.Print("Invalid tests");
             BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(46, 81, 0.9f));
-            BatteryManagementSystemTest.ExpectFalse(BatteryManagementSystem.BatteryIsOk(5, 20, 0.2f));
-            BatteryManagementSystemTest.ExpectFalse(BatteryManagementSystem.BatteryIsOk(46, 81, 0.9f));
+            BatteryManagementSystemTest.ExpectFalse(BatteryManagementSystem.BatteryIsOk(20, 45, 0.7f));
+            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(4, 18, 0.1f));
         }
     }
 }

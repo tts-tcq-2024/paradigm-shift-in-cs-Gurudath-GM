@@ -1,5 +1,5 @@
 using System;
-namespace BatteryManagementSystem_
+namespace paradigm_shift_csharp
 {
     internal class BatteryStatus
     {

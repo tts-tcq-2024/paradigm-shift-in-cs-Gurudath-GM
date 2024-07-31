@@ -1,6 +1,4 @@
-using Google.Cloud.Translation.V2;
-
-namespace BatteryManagementSystem_
+namespace paradigm_shift_csharp
 {
     internal class BatteryManagementSystemTest
     {

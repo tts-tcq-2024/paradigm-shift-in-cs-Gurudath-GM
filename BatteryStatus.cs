@@ -1,4 +1,3 @@
-using System;
 namespace paradigm_shift_csharp
 {
     internal class BatteryStatus
@@ -22,5 +21,9 @@ namespace paradigm_shift_csharp
             BMS_Util.HighBreach(minValue, maxValue, value, batteryState);
         }
 
+        public static void Print(string batteryStatus) 
+        {
+            Console.WriteLine(Language.Translator(batteryStatus, Language.selectedLanguage));
+        }
     }
 }

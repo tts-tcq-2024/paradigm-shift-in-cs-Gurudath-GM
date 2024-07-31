@@ -1,4 +1,4 @@
-namespace BatteryManagementSystem_
+namespace paradigm_shift_csharp
 {
     internal class Language
     {

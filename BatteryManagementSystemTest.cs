@@ -2,7 +2,7 @@ namespace paradigm_shift_csharp
 {
     internal class BatteryManagementSystemTest
     {
-        private static void ExpectTrue(bool expression)
+        private static void ExpectTrue(bool expression)        // If the state of battery is Normal & Warnig condition, expecting true
         {
             if (!expression)
             {
@@ -10,7 +10,7 @@ namespace paradigm_shift_csharp
             }
         }
 
-        private static void ExpectFalse(bool expression)
+        private static void ExpectFalse(bool expression)        // If the state of battery is Breach & Warnig condition, expecting false
         {
             if (expression)
             {

@@ -2,34 +2,49 @@ namespace paradigm_shift_csharp
 {
     internal class BatteryManagementSystemTest
     {
-        private static void ExpectTrue(bool expression)        // If the state of battery is Normal & Warnig condition, expecting true
+        private static bool actual;
+        public static ushort printActualCount;
+        private static ushort printExpectedCount = 43;
+        private static void ExpectedResult(bool expected, bool actual)
         {
-            if (!expression)
-            {
-                BatteryStatus.Print("Expected true, but got false");
-            }
+            if (!expected && actual)
+                BMS_Util.Print($"Expected {actual}, but got {expected}");
         }
 
-        private static void ExpectFalse(bool expression)        // If the state of battery is Breach & Warnig condition, expecting false
+        public static void TestLowWarning(float Temperature, float stateOfCharge, float chargeRate, bool expected)
         {
-            if (expression)
-            {
-                BatteryStatus.Print("Expected false, but got true");
-            }
+            actual = BatteryManagementSystem.BatteryIsOk(Temperature, stateOfCharge, chargeRate);
+            ExpectedResult(expected, actual);
         }
 
-        public static void Execution()
+        public static void TestHighWarning(float temperature, float stateOfCharge, float chargeRate, bool expected)
         {
-            BatteryStatus.Print("Valid tests");
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(5.5f, 20.5f, 0.22f));
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(20, 45, 0.7f));
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(45, 80, 0.8f));
+            actual = BatteryManagementSystem.BatteryIsOk(temperature, stateOfCharge, chargeRate);
+            ExpectedResult(expected, actual);
+        }
+        public static void TestLowBreach(float temperature, float stateOfCharge, float chargeRate, bool expected)
+        {
+            actual = BatteryManagementSystem.BatteryIsOk(temperature, stateOfCharge, chargeRate);
+            ExpectedResult(expected, actual);
+        }
+        public static void TestHighBreach(float temperature, float stateOfCharge, float chargeRate, bool expected)
+        {
+            actual = BatteryManagementSystem.BatteryIsOk(temperature, stateOfCharge, chargeRate);
+            ExpectedResult(expected, actual);
+        }
 
-            Console.WriteLine();
-            BatteryStatus.Print("Invalid tests");
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(46, 81, 0.9f));
-            BatteryManagementSystemTest.ExpectFalse(BatteryManagementSystem.BatteryIsOk(20, 45, 0.7f));
-            BatteryManagementSystemTest.ExpectTrue(BatteryManagementSystem.BatteryIsOk(4, 18, 0.1f));
+        public static void TestNormal(float temperature, float stateOfCharge, float chargeRate, bool expected)
+        {
+            actual = BatteryManagementSystem.BatteryIsOk(temperature, stateOfCharge, chargeRate);
+            ExpectedResult(expected, actual);
+            if (actual == expected)
+                BMS_Util.Print("Battery parameters are within the range!");
+        }
+
+        public static void TestPrint()
+        {
+            if (printActualCount == printExpectedCount)
+                BMS_Util.Print("Error!");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace paradigm_shift_csharp
             return text;
         }
 
-        public static string EnglishToGerman(string text)
+        private static string EnglishToGerman(string text)
         {
             if (EnToDe.ContainsKey(text))
             {
